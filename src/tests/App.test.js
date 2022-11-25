@@ -29,7 +29,7 @@ describe('Renderiza o componente App e...', () => {
     expect(favorite).toBeInTheDocument();
 
     userEvent.click(home); // interagindo
-    console.log(history.location.pathname); // history para acessar a sessão de histórico do navegador, pathname é onde está a rota.
+    // console.log(history.location.pathname); // history para acessar a sessão de histórico do navegador, pathname é onde está a rota.
     expect(history.location.pathname).toBe('/'); // aferindo
 
     userEvent.click(about);
