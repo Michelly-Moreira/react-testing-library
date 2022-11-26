@@ -22,7 +22,7 @@ describe('Renderiza um card com informação de determinado Pokemon e...', () =>
     expect(averagePokemon).toBeInTheDocument();
     expect(pokemon).toBeInTheDocument();
     expect(pokemon.src).toBe('https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
-    expect(pokemon.alt).toBe('Pikachu sprite');
+    expect(pokemon.alt).toContain('Pikachu sprite');
   });
 
   test('será validado se o card do Pokémon indicado na Pokédex contém um link de navegação para exibir detalhes', () => {
@@ -43,7 +43,7 @@ describe('Renderiza um card com informação de determinado Pokemon e...', () =>
     expect(history.location.pathname).toBe(pokemonId);
   });
 
-  describe.only('Renderiza componente de estrela nos pokémons favoritados e...', () => {
+  describe('Renderiza componente de estrela nos pokémons favoritados e...', () => {
     test('será validado se renderizada uma imagem com o atributo src contendo o caminho /star-icon.svg', () => {
       renderWithRouter(<App />);
 
@@ -84,6 +84,12 @@ describe('Renderiza um card com informação de determinado Pokemon e...', () =>
 
       expect(star).toBeInTheDocument();
       expect(star.alt).toBe('Pikachu is marked as favorite');
+    });
+    test('será validado se exibido na tela um texto com o tipo do pokemon', () => {
+      renderWithRouter(<App />);
+
+      const getType = screen.getAllByTestId('pokemon-type-button');
+      expect(getType[0]).toBeInTheDocument();
     });
   });
 });
